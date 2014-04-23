@@ -19,7 +19,7 @@
 <h1 style="font-size:7em">(312) 548-8698</h1>
 <h1 style="font-size:5em" class="jumbotron" id="message">(waiting...)</div>
 <script>
-    var pusher = new Pusher('<%= @secret %>');
+    var pusher = new Pusher('<%= @key %>');
     var channel = pusher.subscribe('test_channel');
 
     channel.bind('my_event', function(data) {

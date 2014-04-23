@@ -11,7 +11,7 @@ class TwilioController < ApplicationController
   end
 
   def index
-    @secret = ENV['PUSHER_SECRET'];
+    @key = ENV['PUSHER_KEY'];
   end
 
   def sms
