@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Twilio on Rails!</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1-beta1/jquery.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <script src="http://js.pusher.com/2.1/pusher.min.js" type="text/javascript"></script>
+  <%= csrf_meta_tags %>
+</head>
+<body style="text-align:center">
+
+
+<img src="https://www.twilio.com/packages/company/img/logos_downloadable_logobrand.png"/>
+<h1 style="font-size:3em">This is a live Rails app that integrates with Twilio.</h1>
+<h1 style="font-size:3em">Please send a text to the number below to take it for a spin!</h1>
+<h1 style="font-size:7em">(312) 548-8698</h1>
+<h1 style="font-size:5em" class="jumbotron" id="message">(waiting...)</div>
+<script>
+    var pusher = new Pusher('60d86fcaa4f43f6b74ab');
+    var channel = pusher.subscribe('test_channel');
+
+    channel.bind('my_event', function(data) {
+      $('#message').text(data.message);     
+    });
+
+</script>
+
+
+</body>
+</html>
