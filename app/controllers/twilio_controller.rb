@@ -4,13 +4,14 @@ class TwilioController < ApplicationController
   layout nil
 
   def initialize
-	  Pusher.app_id = '28844'
-	  Pusher.key = '60d86fcaa4f43f6b74ab'
-	  Pusher.secret = '907bf2660af1d0922ec6'
+    Pusher.app_id = ENV['PUSHER_APP']
+    Pusher.key = ENV['PUSHER_KEY']
+    Pusher.secret = ENV['PUSHER_SECRET']
     super
   end
 
   def index
+    @secret = ENV['PUSHER_SECRET'];
   end
 
   def sms
