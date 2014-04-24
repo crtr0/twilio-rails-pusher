@@ -40,3 +40,7 @@ Now that the app is deployed to a public server, you can configure your Twilio n
 
 That's it! Now you can load the main page (i.e. `http://twilio-rails-pusher.herokuapp.com/twilio`) and send text messages to your Twilio number. They should appear on the page instantly, no refresh required.
 
+A live version of this app is running here:
+
+[twilio-rails-pusher.herokuapp.com/twilio](http://twilio-rails-pusher.herokuapp.com/twilio)
+
