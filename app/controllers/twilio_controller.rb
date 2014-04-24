@@ -1,8 +1,14 @@
+require 'twilio-ruby'
 require 'pusher'
 
 class TwilioController < ApplicationController
+  
+  include Webhookable
+
   layout nil
 
+  skip_before_action :verify_authenticity_token
+  
   def initialize
     Pusher.app_id = ENV['PUSHER_APP']
     Pusher.key = ENV['PUSHER_KEY']
@@ -16,7 +22,11 @@ class TwilioController < ApplicationController
 
   def sms
     Pusher.trigger('test_channel', 'my_event', {:message => params[:Body]})
-    render text: '<Response><Message>I am a text message. You can learn to send me. Just "gem install twilio-ruby". twilio.com/docs for more info!</Message></Response>', content_type: 'text/xml'
+    response = Twilio::TwiML::Response.new do |r|
+      r.Message 'I am a text message. You can learn to send me. Just "gem install twilio-ruby". twilio.com/docs for more info!' 
+    end
+  
+    render_twiml response
   end
 
 end
